@@ -66,7 +66,7 @@ type Content struct {
 		Name string `json:"name"`
 		Type string `json:"type"`
 	} `json:"container"`
-	ID    string `json:"id"`
+	Id    string `json:"id"`
 	Space struct {
 		Expandable struct {
 			Description string `json:"description"`
