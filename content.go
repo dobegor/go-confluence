@@ -151,7 +151,7 @@ func (w *Wiki) GetContent(contentID string, expand []string) (*Content, error) {
 	return &content, nil
 }
 
-func (w *Wiki) UpdateContent(content *ContentUpdate) (*Content, error) {
+func (w *Wiki) UpdateContent(content *ContentUpdate) (*ContentUpdate, error) {
 	jsonbody, err := json.Marshal(content)
 	if err != nil {
 		return nil, err
