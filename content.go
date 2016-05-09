@@ -7,21 +7,20 @@ import (
 	"strings"
 )
 
-// type Content struct {
-// 	Id     string `json:"id"`
-// 	Type   string `json:"type"`
-// 	Status string `json:"status"`
-// 	Title  string `json:"title"`
-// 	Body   struct {
-// 		Storage struct {
-// 			Value          string `json:"value"`
-// 			Representation string `json:"representation"`
-// 		} `json:"storage"`
-// 	} `json:"body"`
-// 	Version struct {
-// 		Number int `json:"number"`
-// 	} `json:"version"`
-// }
+type ContentUpdate struct {
+	Body struct {
+		Storage struct {
+			Representation string `json:"representation"`
+			Value          string `json:"value"`
+		} `json:"storage"`
+	} `json:"body"`
+	ID      string `json:"id"`
+	Title   string `json:"title"`
+	Type    string `json:"type"`
+	Version struct {
+		Number int `json:"number"`
+	} `json:"version"`
+}
 
 type Content struct {
 	Expandable struct {
@@ -152,7 +151,7 @@ func (w *Wiki) GetContent(contentID string, expand []string) (*Content, error) {
 	return &content, nil
 }
 
-func (w *Wiki) UpdateContent(content *Content) (*Content, error) {
+func (w *Wiki) UpdateContent(content *ContentUpdate) (*Content, error) {
 	jsonbody, err := json.Marshal(content)
 	if err != nil {
 		return nil, err
