@@ -166,7 +166,7 @@ func (w *Wiki) UpdateContent(content *ContentUpdate) (*ContentUpdate, error) {
 		return nil, err
 	}
 
-	var newContent Content
+	var newContent ContentUpdate
 	err = json.Unmarshal(res, &newContent)
 	if err != nil {
 		return nil, err
