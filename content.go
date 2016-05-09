@@ -14,7 +14,7 @@ type ContentUpdate struct {
 			Value          string `json:"value"`
 		} `json:"storage"`
 	} `json:"body"`
-	ID      string `json:"id"`
+	Id      string `json:"id"`
 	Title   string `json:"title"`
 	Type    string `json:"type"`
 	Version struct {
