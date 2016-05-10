@@ -143,7 +143,7 @@ func (w *Wiki) GetContent(contentID string, expand []string) (*Content, error) {
 	if err != nil {
 		return nil, err
 	}
-	dataRes, _ := ioutil.ReadAll(res.Body)
+	dataRes, _ := ioutil.ReadAll(res)
 	fmt.Println(string(dataRes))
 
 	var content Content
