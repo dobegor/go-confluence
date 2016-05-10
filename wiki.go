@@ -67,9 +67,11 @@ func (w *Wiki) sendRequest(req *http.Request) ([]byte, error) {
 	req.Header.Add("Accept", "application/json, */*")
 	w.authMethod.auth(req)
 
+	fmt.Println("==========")
 	fmt.Println(req.Body)
 	fmt.Println(req.Method)
 	fmt.Println(req.URL.Path)
+	fmt.Println("==========")
 
 	resp, err := w.client.Do(req)
 	if err != nil {
