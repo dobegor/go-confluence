@@ -64,15 +64,8 @@ func TokenAuth(tokenkey string) AuthMethod {
 }
 
 func (w *Wiki) sendRequest(req *http.Request) ([]byte, error) {
-	req.Header.Add("Accept", "application/json, */*")
+	// req.Header.Add("Accept", "application/json, */*")
 	w.authMethod.auth(req)
-
-	fmt.Println("==========")
-	dataReq, err := ioutil.ReadAll(req.Body)
-	fmt.Println(string(dataReq))
-	fmt.Println(req.Method)
-	fmt.Println(req.URL.Path)
-	fmt.Println("==========")
 
 	resp, err := w.client.Do(req)
 	if err != nil {
