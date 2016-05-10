@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 type Wiki struct {
@@ -69,7 +68,8 @@ func (w *Wiki) sendRequest(req *http.Request) ([]byte, error) {
 	w.authMethod.auth(req)
 
 	fmt.Println("==========")
-	fmt.Println(strings.NewReader(req.Body))
+	dataReq, err := ioutil.ReadAll(req.Body)
+	fmt.Println(string(dataReq))
 	fmt.Println(req.Method)
 	fmt.Println(req.URL.Path)
 	fmt.Println("==========")
