@@ -2,7 +2,6 @@ package confluence
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"net/url"
 	"strings"
@@ -162,7 +161,7 @@ func (w *Wiki) UpdateContent(content *ContentUpdate) (*ContentUpdate, error) {
 	contentEndPoint, err := w.contentEndpoint(content.Id)
 	req, err := http.NewRequest("PUT", contentEndPoint.String(), strings.NewReader(string(jsonbody)))
 	req.Header.Add("Content-Type", "application/json; charset=utf-8")
-	fmt.Println(string(jsonbody))
+	// fmt.Println(string(jsonbody))
 
 	res, err := w.sendRequest(req)
 	if err != nil {
