@@ -143,7 +143,7 @@ func (w *Wiki) GetContent(contentID string, expand []string) (*Content, error) {
 		return nil, err
 	}
 	dataRes := string(res)
-	fmt.Println(dataRes)
+	// fmt.Println(dataRes)
 
 	var content Content
 	err = json.Unmarshal(res, &content)
