@@ -2,7 +2,6 @@ package confluence
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"net/url"
 	"strings"
@@ -132,8 +131,6 @@ func (w *Wiki) GetContent(contentID string, expand []string) (*ContentUpdate, er
 	data := url.Values{}
 	data.Set("expand", strings.Join(expand, ","))
 	contentEndPoint.RawQuery = data.Encode()
-
-	fmt.Println(contentEndPoint.String())
 
 	req, err := http.NewRequest("GET", contentEndPoint.String(), nil)
 	if err != nil {
