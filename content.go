@@ -2,6 +2,7 @@ package confluence
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/url"
 	"strings"
@@ -123,7 +124,7 @@ func (w *Wiki) DeleteContent(contentID string) error {
 	return nil
 }
 
-func (w *Wiki) GetContent(contentID string, expand []string) (*Content, error) {
+func (w *Wiki) GetContent(contentID string, expand []string) (*ContentUpdate, error) {
 	contentEndPoint, err := w.contentEndpoint(contentID)
 	if err != nil {
 		return nil, err
@@ -131,6 +132,8 @@ func (w *Wiki) GetContent(contentID string, expand []string) (*Content, error) {
 	data := url.Values{}
 	data.Set("expand", strings.Join(expand, ","))
 	contentEndPoint.RawQuery = data.Encode()
+
+	fmt.Println(contentEndPoint.String())
 
 	req, err := http.NewRequest("GET", contentEndPoint.String(), nil)
 	if err != nil {
@@ -144,7 +147,7 @@ func (w *Wiki) GetContent(contentID string, expand []string) (*Content, error) {
 	// dataRes := string(res)
 	// fmt.Println(dataRes)
 
-	var content Content
+	var content ContentUpdate
 	err = json.Unmarshal(res, &content)
 	if err != nil {
 		return nil, err
